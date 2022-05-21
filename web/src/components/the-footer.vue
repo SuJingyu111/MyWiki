@@ -1,13 +1,13 @@
 <template>
   <a-layout-footer style="text-align: center">
-    MY EBOOK!
+    MY EBOOK
   </a-layout-footer>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'the-footer',
-});
+  export default defineComponent({
+    name: 'the-footer'
+  });
 </script>

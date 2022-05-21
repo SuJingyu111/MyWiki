@@ -2,8 +2,8 @@
   <a-layout>
     <a-layout-sider width="200" style="background: #fff">
       <a-menu
-          mode="inline"
-          :style="{ height: '100%', borderRight: 0 }"
+        mode="inline"
+        :style="{ height: '100%', borderRight: 0 }"
       >
         <a-sub-menu key="sub1">
           <template #title>
@@ -35,24 +35,41 @@
       </a-menu>
     </a-layout-sider>
     <a-layout-content
-        :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
-    >
-      Content
-    </a-layout-content>
+    :style="{ background: '#fff', padding: '24px', margin: 0, minHeight: '280px' }"
+  >
+      <pre>
+{{ebooks}}
+{{ebooks2}}
+      </pre>
+  </a-layout-content>
   </a-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import axios from "axios";
+import { defineComponent, onMounted, ref, reactive, toRef } from 'vue';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'Home',
-  setup (){
-    console.log("setup")
-    axios.get("http://localhost:8880/ebook/list?name=Spring").then((response) => {
-      console.log(response);
-    })
+  setup() {
+    console.log("setup");
+    const ebooks = ref();
+    const ebooks1 = reactive({books: []});
+
+    onMounted(() => {
+      console.log("onMounted");
+      axios.get("http://127.0.0.1:8880/ebook/list?name=Spring").then((response) => {
+        const data = response.data;
+        ebooks.value = data.content;
+        ebooks1.books = data.content;
+        console.log(response);
+      });
+    });
+
+    return {
+      ebooks,
+      ebooks2: toRef(ebooks1, "books")
+    }
   }
 });
 </script>

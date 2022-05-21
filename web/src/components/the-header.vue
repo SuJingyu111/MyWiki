@@ -2,12 +2,12 @@
   <a-layout-header class="header">
     <div class="logo" />
     <a-menu
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
+      theme="dark"
+      mode="horizontal"
+      :style="{ lineHeight: '64px' }"
     >
       <a-menu-item key="1">
-        nav 1
+        nav 1111
       </a-menu-item>
       <a-menu-item key="2">
         nav 2
@@ -20,9 +20,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+  import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'the-header',
-});
+  export default defineComponent({
+    name: 'the-header'
+  });
 </script>
